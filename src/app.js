@@ -4,34 +4,29 @@ import { BrowserRouter, Route} from 'react-router-dom';
 // import IndecisionApp from './components/IndecisionApp.js;
 //import 'normalize.css/normalize.css';
 import './styles/styles.scss'
+import NewCampaign from './components/NewCampaign.js';
+import SignIn from './components/SignIn.js';
 
-const ExpenseDashboardPage = () => (
+
+const Home = () => (
   <div>
       This is from my dashboard component
   </div>
 )
-const AddExpensePage = () => (
+
+const SignUp = () => (
   <div>
-      We are at Add
+      We are at Sign Up Page
   </div>
 )
-const EditExpensePage = () => (
-  <div>
-      We are at Edit
-  </div>
-)
-const HelpPage = () => (
-  <div>
-      We are at help
-  </div>
-)
+
 const routes = (
   <BrowserRouter>
     <div>
-      <Route path="/" component={ExpenseDashboardPage} exact={true}/>
-      <Route path="/create" component={AddExpensePage}/>
-      <Route path="/edit" component={EditExpensePage} />
-      <Route path="/help" component={HelpPage}/>
+      <Route path="/" component={Home} exact={true} />
+      <Route path="/SignIn" component={SignIn} />
+      <Route path="/SignUp" component={SignUp} />
+      <Route path="/NewCampaign" component={NewCampaign}/>
     </div>
   </BrowserRouter>
 )
