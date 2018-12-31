@@ -1,10 +1,23 @@
 import React from 'react';
+import ExpenseForm from './ExpenseForm'
+import {addCampaign} from '../actions/campaigns'
+import {connect} from 'react-redux'
 
-const NewCampaign = () => (
+const NewCampaign = (props) => (
   <div>
-      We are at New Campaign Page
+      <h1>New Campaign</h1>
+      <ExpenseForm
+        onSubmit={(campaign) => {
+          props.dispatch(addCampaign(campaign))
+          props.history.push('/')
+        }} />
+
   </div>
 )
 
 
-export default NewCampaign;
+
+
+
+
+export default connect()(NewCampaign);

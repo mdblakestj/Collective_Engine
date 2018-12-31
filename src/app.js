@@ -1,34 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route} from 'react-router-dom';
+
 // import IndecisionApp from './components/IndecisionApp.js;
 //import 'normalize.css/normalize.css';
 import './styles/styles.scss'
-import NewCampaign from './components/NewCampaign.js';
-import SignIn from './components/SignIn.js';
+import AppRouter from './routers/AppRouter'
 
 
-const Home = () => (
-  <div>
-      This is from my dashboard component
-  </div>
-)
 
-const SignUp = () => (
-  <div>
-      We are at Sign Up Page
-  </div>
-)
 
-const routes = (
-  <BrowserRouter>
-    <div>
-      <Route path="/" component={Home} exact={true} />
-      <Route path="/SignIn" component={SignIn} />
-      <Route path="/SignUp" component={SignUp} />
-      <Route path="/NewCampaign" component={NewCampaign}/>
-    </div>
-  </BrowserRouter>
-)
+import { Provider } from 'react-redux';
+//import 'normalize.css/normalize.css';
+import './styles/styles.scss';
+import configureStore from './store/configureStore';
+import {addCampaign} from './actions/campaigns';
+// import {setTextFilter} from './actions/filters';
+// import getVisibleExpenses from './selectors/expenses'
+// import './firebase/firebase'
 
-ReactDOM.render(routes, document.getElementById('app'))
+const store = configureStore();
+
+
+store.dispatch(addCampaign({title: 'Boycott Starbucks', description: 'This is a campaign to Boycott starbucks', triggerNumber: 1000, createdAt: -3000}))
+// store.dispatch(addExpense({description: 'Gas Bill', amount: 50, createdAt: 300}))
+// store.dispatch(addExpense({description: 'Rent', amount: 50, createdAt: 1000}))
+
+
+
+const jsx = (
+  <Provider store={store}>
+    <AppRouter/>
+  </Provider>
+);
+
+ReactDOM.render(jsx, document.getElementById('app'))
