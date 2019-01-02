@@ -1,16 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ExpenseDetails from './ExpenseListItem'
+import CampaignDetails from './CampaignListItem'
 import getVisibleExpenses from '../selectors/expenses'
 
-const ExpenseList = (props) => (
+const CampaignList = (props) => (
 
   <div>
     <h1> Campaign List </h1>
     {props.campaigns.map((campaign) => {
       return (
 
-        <ExpenseDetails key={campaign.id} {...campaign} />
+        <CampaignDetails key={campaign.id} {...campaign} />
 
       )
     })}
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
 }
 
 
-const ConnectedExpenseList = connect(mapStateToProps
-)(ExpenseList)
+const ConnectedCampaignList = connect(mapStateToProps
+)(CampaignList)
 
-export default ConnectedExpenseList;
+export default ConnectedCampaignList;

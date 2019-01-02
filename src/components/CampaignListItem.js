@@ -5,7 +5,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
 
-const ExpenseDetails = ({id, title, triggerNumber, description, createdAt}) => (
+const CampaignDetails = ({id, title, triggerNumber, description, createdAt}) => (
 
 
         <div>
@@ -24,4 +24,4 @@ const ExpenseDetails = ({id, title, triggerNumber, description, createdAt}) => (
 
 
 
-export default ExpenseDetails;
+export default CampaignDetails;

@@ -6,6 +6,7 @@ const Header = () => (
       <h1>Collective Engine</h1>
       <NavLink to="/" activeClassName="is-active" exact={true}>Home  </NavLink>
       <NavLink to="/NewCampaign" activeClassName="is-active">New Campaign  </NavLink>
+      <NavLink to="/NewUser" activeClassName="is-active">Sign In</NavLink>
   </header>
 )
 

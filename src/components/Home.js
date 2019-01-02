@@ -1,5 +1,5 @@
 import React from 'react'
-import ExpenseList from './ExpenseList'
+import CampaignList from './CampaignList'
 // import ExpenseListFilters from './ExpenseListFilters'
 
 
@@ -7,8 +7,8 @@ import ExpenseList from './ExpenseList'
 
 const Home = () => (
   <div>
-      
-      <ExpenseList  />
+
+      <CampaignList  />
 
 
   </div>

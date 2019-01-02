@@ -6,13 +6,13 @@ import moment from 'moment';
 const now = moment();
 
 
-export default class ExpenseForm extends React.Component {
+export default class CampaignForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       title: props.campaign ? props.campaign.title : '',
       description: props.campaign ? props.campaign.description :'',
-      note: props.campaign ? props.campaign.note : '',
+      triggerNumber: props.campaign ? props.campaign.triggerNumber : '',
       createdAt: props.campaign ? moment(props.campaign.createdAt): moment(),
       error: ''
 
@@ -31,11 +31,9 @@ export default class ExpenseForm extends React.Component {
     const note = e.target.value;
     this.setState(() => ({note}))
   }
-  onAmountChange = (e) => {
-    const amount = e.target.value;
-    if ((!amount) || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
-      this.setState(() => ({ amount }))
-    }
+  onTriggerNumberChange = (e) => {
+    const triggerNumber = e.target.value;
+    this.setState(() => ({triggerNumber}))
   }
   onDateChange = (createdAt) => {
     this.setState(() => ({createdAt}))
@@ -63,7 +61,7 @@ export default class ExpenseForm extends React.Component {
       <div>
       {this.state.error && <p>{this.state.error}</p>}
 
-      
+
       <form onSubmit={this.onSubmit}>
         <input
          type="text"
@@ -77,13 +75,13 @@ export default class ExpenseForm extends React.Component {
          autoFocus
          value={this.state.description}
          onChange={this.onDescriptionChange}/>
+         <input
+          type="number"
+          placeholder="Trigger Number"
+          autoFocus
+          value={this.state.triggerNumber}
+          onChange={this.onTriggerNumberChange}/>
 
-        <textarea
-          placeholder="Add a note for your expense"
-          value={this.state.note}
-          onChange={this.onNoteChange}>
-
-        </textarea>
         <button>Form Submit</button>
       </form>
       </div>
