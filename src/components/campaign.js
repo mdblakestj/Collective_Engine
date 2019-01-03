@@ -9,6 +9,7 @@ const Campaign = (props) => {
 
         <div>
 
+            <h3> {props.campaign.title}</h3>
             <h3> {props.campaign.description}</h3>
             <p> Trigger: {props.campaign.triggerNumber}</p>
             <p> Created At: {props.campaign.createdAt}</p>

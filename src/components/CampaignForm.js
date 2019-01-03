@@ -48,6 +48,7 @@ export default class CampaignForm extends React.Component {
 
       this.setState(() => ({error: ''}))
       this.props.onSubmit({
+        title: this.state.title,
         description: this.state.description,
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
