@@ -16,7 +16,7 @@ import configureStore from './store/configureStore';
 import {addCampaign} from './actions/campaigns';
 // import {setTextFilter} from './actions/filters';
 // import getVisibleExpenses from './selectors/expenses'
-// import './firebase/firebase'
+import './firebase/firebase'
 
 const store = configureStore();
 

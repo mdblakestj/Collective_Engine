@@ -51,6 +51,7 @@ export default class CampaignForm extends React.Component {
         title: this.state.title,
         description: this.state.description,
         createdAt: this.state.createdAt.valueOf(),
+        triggerNumber: this.state.triggerNumber,
         note: this.state.note
       })
     }

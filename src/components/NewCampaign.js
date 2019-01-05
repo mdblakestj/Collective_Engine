@@ -1,6 +1,6 @@
 import React from 'react';
 import CampaignForm from './CampaignForm'
-import {addCampaign} from '../actions/campaigns'
+import {startAddCampaign} from '../actions/campaigns'
 import {connect} from 'react-redux'
 
 const NewCampaign = (props) => (
@@ -8,7 +8,7 @@ const NewCampaign = (props) => (
       <h1>New Campaign</h1>
       <CampaignForm
         onSubmit={(campaign) => {
-          props.dispatch(addCampaign(campaign))
+          props.dispatch(startAddCampaign(campaign))
           props.history.push('/')
         }} />
 

@@ -1,29 +1,42 @@
 import uuid from 'uuid'
+import database from '../firebase/firebase'
 
-//ADD_EXPENSE
-export const addCampaign = (
-  {title = '',
-    description = '',
-    triggerNumber = 0,
-     createdAt = 0} = {}
-   ) => ({
+//ADD_campaign
+export const addCampaign = (campaign) => ({
   type: 'ADD_CAMPAIGN',
-  campaign: {
-    id: uuid(),
-    title,
-    description,
-    triggerNumber,
-    createdAt
+  campaign
+
+});
+
+
+export const startAddCampaign = (campaignData ={}) => {
+  return (dispatch) => {
+    const {
+      title = '',
+      description = '',
+      triggerNumber = 0,
+       createdAt = 0
+
+    } = campaignData;
+    const campaign = { title, description, triggerNumber, createdAt};
+    database.ref('campaigns').push(campaign).then((ref) => {
+      dispatch(addCampaign({
+        id: ref.key,
+        ...campaign
+      }))
+    })
+
+
   }
-})
+}
 //REMOVE
-export const removeExpense = ({id} = {}) => ({
-  type: 'REMOVE_EXPENSE',
+export const removeCampaign = ({id} = {}) => ({
+  type: 'REMOVE_campaign',
   id,
 })
 //EDIT
-export const editExpense = (id, updates) => ({
-  type: 'EDIT_EXPENSE',
+export const editCampaign = (id, updates) => ({
+  type: 'EDIT_campaign',
   id,
   updates
 }
