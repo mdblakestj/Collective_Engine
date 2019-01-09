@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 //import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import configureStore from './store/configureStore';
-import {addCampaign} from './actions/campaigns';
+import {startSetCampaigns} from './actions/campaigns';
 // import {setTextFilter} from './actions/filters';
 // import getVisibleExpenses from './selectors/expenses'
 import './firebase/firebase'
@@ -21,7 +21,7 @@ import './firebase/firebase'
 const store = configureStore();
 
 
-store.dispatch(addCampaign({title: 'Boycott Starbucks', description: 'This is a campaign to Boycott starbucks', triggerNumber: 1000, createdAt: -3000}))
+// store.dispatch(addCampaign({title: 'Boycott Starbucks', description: 'This is a campaign to Boycott starbucks', triggerNumber: 1000, createdAt: -3000}))
 // store.dispatch(addExpense({description: 'Gas Bill', amount: 50, createdAt: 300}))
 // store.dispatch(addExpense({description: 'Rent', amount: 50, createdAt: 1000}))
 
@@ -33,4 +33,8 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(jsx, document.getElementById('app'))
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+
+store.dispatch(startSetCampaigns()).then(() => {
+  ReactDOM.render(jsx, document.getElementById('app'))
+})

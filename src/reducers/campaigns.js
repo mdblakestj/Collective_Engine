@@ -20,6 +20,8 @@ const campaignReducer = (state = campaignReducerDefaultState, action) => {
           return expense
         }
       })
+    case 'SET_CAMPAIGNS':
+      return action.campaign
 
 
     default:
