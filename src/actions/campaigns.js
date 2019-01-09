@@ -31,13 +31,40 @@ export const startAddCampaign = (campaignData ={}) => {
 }
 //REMOVE
 export const removeCampaign = ({id} = {}) => ({
-  type: 'REMOVE_campaign',
+  type: 'REMOVE_CAMPAIGN',
   id,
 })
 //EDIT
 export const editCampaign = (id, updates) => ({
-  type: 'EDIT_campaign',
+  type: 'EDIT_CAMPAIGN',
   id,
   updates
 }
 )
+
+export const setCampaigns = (campaign) => ({
+  type: 'SET_CAMPAIGNS',
+  campaign
+
+}
+)
+
+export const startSetCampaigns = () => {
+  return (dispatch) => {
+    return database.ref('campaigns').once('value').then((snapshot) => {
+        const campaigns = [];
+        snapshot.forEach((snapshotChild) => {
+          campaigns.push({
+            id: snapshotChild.key,
+            ...snapshotChild.val()
+          })
+        })
+        dispatch(setCampaigns(
+          campaigns
+        ))
+
+      })
+
+
+  }
+}

@@ -13,7 +13,6 @@ const CampaignDetails = ({id, title, triggerNumber, description, createdAt}) => 
 
             <h3> {title}</h3>
           </Link>
-          <h3> {title}</h3>
           <p>{description}</p>
           <p> TriggerNumber: {triggerNumber}</p>
           <p>Created At: {createdAt}</p>
