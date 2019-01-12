@@ -6,6 +6,7 @@ import NewUser from '../components/NewUser.js';
 // import SignIn from './components/SignIn.js';
 import Home from '../components/Home.js';
 import Campaign from '../components/Campaign'
+import LogIn from '../components/Login'
 
 
 
@@ -14,7 +15,8 @@ const AppRouter = () => (
     <div>
       <Header />
       <Switch>
-        <Route path="/" component={Home} exact={true} />
+        <Route path="/" component={LogIn} exact={true} />
+        <Route path="/Home" component={Home}/>
         <Route path="/NewCampaign" component={NewCampaign}/>
         <Route path="/campaign/:id" component={Campaign} />
         <Route path="/NewUser" component={NewUser}/>
