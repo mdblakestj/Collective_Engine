@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// import IndecisionApp from './components/IndecisionApp.js;
 //import 'normalize.css/normalize.css';
 import './styles/styles.scss'
-import AppRouter from './routers/AppRouter'
+import AppRouter, {history} from './routers/AppRouter'
 import { Provider } from 'react-redux';
-//import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import configureStore from './store/configureStore';
 import {startSetCampaigns} from './actions/campaigns';
@@ -29,16 +26,31 @@ const jsx = (
   </Provider>
 );
 
+let hasRendered = false;
+const renderApp = () => {
+  if(!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'))
+    hasRendered = true;
+  }
+}
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
 
-store.dispatch(startSetCampaigns()).then(() => {
-  ReactDOM.render(jsx, document.getElementById('app'))
-})
+// store.dispatch(startSetCampaigns()).then(() => {
+//   ReactDOM.render(jsx, document.getElementById('app'))
+// })
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log("Logged In")
+    store.dispatch(startSetCampaigns()).then(() => {
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/home')
+      }
+    });
+
   } else {
-    console.log('Logged Out')
+    renderApp();
+    history.push('/');
   }
 })

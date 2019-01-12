@@ -7,7 +7,7 @@ const Header = (props) => (
   <header>
       <h1>Collective Engine</h1>
       <div class="home-link">
-      <NavLink to="/" activeClassName="is-active" exact={true}>Home  </NavLink>
+      <NavLink to="/home" activeClassName="is-active" exact={true}>Home  </NavLink>
       <NavLink to="/NewCampaign" activeClassName="is-active">New Campaign  </NavLink>
       <NavLink to="/NewUser" activeClassName="is-active">Sign In</NavLink>
       <button onClick={props.startLogout}>Log Out</button>
