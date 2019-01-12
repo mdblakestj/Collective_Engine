@@ -20,6 +20,7 @@
     "firebase": "^5.7.2",
     "foundation": "^4.2.1-1",
     "foundation-sites": "^6.5.1",
+    "history": "^4.7.2",
     "knex": "^0.16.3",
     "live-server": "^1.2.0",
     "moment": "^2.23.0",
