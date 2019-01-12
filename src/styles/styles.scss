@@ -1,2 +1,80 @@
 @import './base/base';
 @import './base/settings';
+
+body {
+  text: gray;
+  h1, body, button, p, a {
+  font-family: open sans, Helvetica, sans-serif;
+}
+}
+
+.home-link {
+  margin-left: 30%;
+}
+
+.home-link a {
+  margin: 20px;
+}
+
+header {
+  background-color: gray;
+  padding: 10px;
+}
+
+header a {
+  color: #6CCFF6;
+}
+
+header h1 {
+  margin-left: 24%;
+  font-size-adjust: auto;
+  font-size: 50px;
+  color: white;
+}
+
+button {
+  height: 40px;
+  width: 100px;
+  background-color: #6CCFF6;
+  color: #FFF;
+  font-size: 100%;
+  border-radius: 6px;
+}
+
+input {
+  height: 40px;
+  width: 200px;
+  font-size: 100%;
+  border-radius: 6px;
+  margin: 5px;
+  font-size: 100%;
+}
+
+.campaign-title h3 {
+  color: gray;
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.learn-more-button {
+  height: 40px;
+  width: 100px;
+  background-color: #6CCFF6;
+  color: #FFF;
+  font-size: 100%;
+  border-radius: 6px;
+  padding-top: 20px;
+  margin: 0px;
+  text-align: center;
+  border: 0px;
+}
+
+.campaign-list {
+  margin-left: 33.33%;
+  align-items: center;
+}
+
+.campaign-list h1 {
+  color: #001011;
+  letter-spacing: 0.5em;
+}

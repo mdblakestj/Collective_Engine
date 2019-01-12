@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import Foundation from 'react-foundation';
 // import { SingleDatePicker } from 'react-dates';
 // import 'react-dates/lib/css/_datepicker.css';
 
@@ -92,7 +93,7 @@ export default class UserForm extends React.Component {
             onChange={this.onPasswordChange}/>
 
 
-        <button>Form Submit</button>
+        <button type="submit">Submit</button>
       </form>
       </div>
     )

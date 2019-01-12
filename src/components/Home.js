@@ -8,7 +8,7 @@ import CampaignList from './CampaignList'
 const Home = () => (
   <div>
 
-      <CampaignList  />
+      <CampaignList/>
 
 
   </div>
