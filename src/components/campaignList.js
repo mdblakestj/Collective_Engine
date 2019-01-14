@@ -4,7 +4,7 @@ import CampaignDetails from './CampaignListItem'
 import getVisibleExpenses from '../selectors/expenses'
 const CampaignList = (props) => (
 
-  <div class="campaign-list">
+  <div className="campaign-list">
     <h1> Campaign List </h1>
     {props.campaigns.map((campaign) => {
       return (

@@ -8,13 +8,13 @@ import { BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
 const CampaignDetails = ({id, title, triggerNumber, description, createdAt}) => (
 
 
-        <div class="grid-x grid-padding-x small-up-1 medium-up-3 large-up-3">
-          <div class="cell">
-          <div class="campaign-title">
+        <div className="grid-x grid-padding-x small-up-1 medium-up-3 large-up-3">
+          <div className="cell">
+          <div className="campaign-title">
           <h3> {title} </h3>
           </div>
           <Link to={`/campaign/${id}`}>
-            <h3 class="learn-more-button">learn more</h3>
+            <h3 className="learn-more-button">learn more</h3>
           </Link>
           <p>{description}</p>
           <p> TriggerNumber: {triggerNumber}</p>

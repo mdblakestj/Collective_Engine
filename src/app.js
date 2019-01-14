@@ -10,13 +10,9 @@ import {startSetCampaigns} from './actions/campaigns';
 // import {setTextFilter} from './actions/filters';
 // import getVisibleExpenses from './selectors/expenses'
 import {firebase} from './firebase/firebase'
+import {login, logout} from './actions/auth'
 
 const store = configureStore();
-
-
-// store.dispatch(addCampaign({title: 'Boycott Starbucks', description: 'This is a campaign to Boycott starbucks', triggerNumber: 1000, createdAt: -3000}))
-// store.dispatch(addExpense({description: 'Gas Bill', amount: 50, createdAt: 300}))
-// store.dispatch(addExpense({description: 'Rent', amount: 50, createdAt: 1000}))
 
 
 
@@ -36,12 +32,10 @@ const renderApp = () => {
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
 
-// store.dispatch(startSetCampaigns()).then(() => {
-//   ReactDOM.render(jsx, document.getElementById('app'))
-// })
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    store.dispatch(login(user.uid))
     store.dispatch(startSetCampaigns()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {
@@ -50,6 +44,7 @@ firebase.auth().onAuthStateChanged((user) => {
     });
 
   } else {
+    store.dispatch(logout());
     renderApp();
     history.push('/');
   }
