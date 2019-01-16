@@ -11,7 +11,8 @@ const Header = (props) => (
       <NavLink to="/NewCampaign" activeClassName="is-active">New Campaign  </NavLink>
       <NavLink to="/NewUser" activeClassName="is-active">Sign In</NavLink>
 
-      <button onClick={props.startLogout}>Log Out</button>
+      {props.auth && <button onClick={props.startLogout}>Log Out</button>}
+
 
       </div>
 
@@ -25,5 +26,20 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 });
+//
+// export default connect(undefined, mapDispatchToProps)(Header);
 
-export default connect(undefined,mapDispatchToProps)(Header);
+const mapStateToProps = (state, props, dispatch) => {
+  return {
+    auth: state.auth.uid,
+    startLogin: () => dispatch(startLogout())
+  }
+}
+
+
+
+const ConnectedHeader = connect(mapStateToProps, mapDispatchToProps
+)(Header)
+
+
+export default ConnectedHeader;
