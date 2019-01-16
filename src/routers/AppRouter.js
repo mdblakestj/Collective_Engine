@@ -8,6 +8,8 @@ import Home from '../components/Home.js';
 import Campaign from '../components/Campaign';
 import LogIn from '../components/Login';
 import createHistory from 'history/createBrowserHistory';
+import PrivateRoute from './PrivateRoute'
+import MyCampaigns from '../components/MyCampaigns'
 
 export const history = createHistory();
 
@@ -18,7 +20,8 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" component={LogIn} exact={true} />
         <Route path="/Home" component={Home}/>
-        <Route path="/NewCampaign" component={NewCampaign}/>
+        <PrivateRoute path="/NewCampaign" component={NewCampaign}/>
+        <Route path="/MyCampaigns" component={MyCampaigns}/>
         <Route path="/campaign/:id" component={Campaign} />
         <Route path="/NewUser" component={NewUser}/>
 
