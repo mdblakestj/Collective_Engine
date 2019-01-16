@@ -1,17 +1,12 @@
 import {firebase, googleProvider} from '../firebase/firebase'
 
-
-//ADD_campaign
 export const login = (uid) => ({
   type: 'LOGIN',
   uid
-
-
 });
 
-export const logout = (uid) => ({
-  type: 'LOGOUT',
-  uid
+export const logout = () => ({
+  type: 'LOGOUT'
 })
 export const startLogin = () => {
   return () => {
@@ -21,6 +16,7 @@ export const startLogin = () => {
 }
 
 export const startLogout = () => {
+  console.log('logged out')
   return () => {
     return firebase.auth().signOut();
   }

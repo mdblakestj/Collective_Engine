@@ -10,13 +10,20 @@ const Header = (props) => (
       <NavLink to="/home" activeClassName="is-active" exact={true}>Home  </NavLink>
       <NavLink to="/NewCampaign" activeClassName="is-active">New Campaign  </NavLink>
       <NavLink to="/NewUser" activeClassName="is-active">Sign In</NavLink>
+
       <button onClick={props.startLogout}>Log Out</button>
+
       </div>
 
   </header>
 )
 const mapDispatchToProps = (dispatch) => ({
-  startLogout: () => dispatch(startLogout())
+
+
+  startLogout:() => dispatch(startLogout())
+
+
+
 });
 
-export default connect(undefined, mapDispatchToProps)(Header);
+export default connect(undefined,mapDispatchToProps)(Header);
