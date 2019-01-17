@@ -29,7 +29,7 @@ const renderApp = () => {
     hasRendered = true;
   }
 }
-
+store.dispatch(startSetCampaigns())
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
 
 
