@@ -15,6 +15,7 @@ export default class UserForm extends React.Component {
       lastName: props.user ? props.user.lastName :'',
       email: props.user ? props.user.email :'',
       password: props.password ? props.user.password :'',
+      password2: props.user ? props.password2 : '',
       createdAt: props.user ? moment(props.user.createdAt): moment(),
       error: ''
 
@@ -37,13 +38,17 @@ export default class UserForm extends React.Component {
     const password = e.target.value;
     this.setState(() => ({password}))
   }
+  onPassword2Change = (e) => {
+    const password = e.target.value;
+    this.setState(() => ({password2}))
+  }
   onDateChange = (createdAt) => {
     this.setState(() => ({createdAt}))
   }
 
   onSubmit = (e) => {
     e.preventDefault()
-    if (!this.state.lastName || !this.state.firstName || !this.state.email || !this.state.password) {
+    if (!this.state.lastName || !this.state.firstName || !this.state.email || !this.state.password || !this.state.password2) {
       this.setState(() => ({error: 'Please provide First Name, LastName, Email, and Password '}))
       console.log(this.state.error)
     } else {
@@ -54,6 +59,7 @@ export default class UserForm extends React.Component {
         firstName:this.state.firstName,
         email: this.state.email,
         password: this.state.password,
+        password2: this.state.password2,
         createdAt: this.state.createdAt.valueOf()
       })
     }
@@ -85,6 +91,12 @@ export default class UserForm extends React.Component {
           autoFocus
           value={this.state.email}
           onChange={this.onEmailChange}/>
+        <input
+            type="text"
+            placeholder="password"
+            autoFocus
+            value={this.state.password}
+            onChange={this.onPasswordChange}/>
         <input
             type="text"
             placeholder="password"
