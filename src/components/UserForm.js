@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 import Foundation from 'react-foundation';
-// import { SingleDatePicker } from 'react-dates';
-// import 'react-dates/lib/css/_datepicker.css';
+import {firebase} from '../firebase/firebase'
 
 const now = moment();
+
 
 
 export default class UserForm extends React.Component {
@@ -14,8 +14,9 @@ export default class UserForm extends React.Component {
       firstName: props.user ? props.user.firstName : '',
       lastName: props.user ? props.user.lastName :'',
       email: props.user ? props.user.email :'',
-      password: props.password ? props.user.password :'',
-      password2: props.user ? props.password2 : '',
+      password: props.user ? props.user.password :'',
+      password2: props.user ? props.user.password2 : '',
+      authToken: props.user ? props.user.authToken: '',
       createdAt: props.user ? moment(props.user.createdAt): moment(),
       error: ''
 
@@ -39,7 +40,7 @@ export default class UserForm extends React.Component {
     this.setState(() => ({password}))
   }
   onPassword2Change = (e) => {
-    const password = e.target.value;
+    const password2 = e.target.value;
     this.setState(() => ({password2}))
   }
   onDateChange = (createdAt) => {
@@ -51,8 +52,17 @@ export default class UserForm extends React.Component {
     if (!this.state.lastName || !this.state.firstName || !this.state.email || !this.state.password || !this.state.password2) {
       this.setState(() => ({error: 'Please provide First Name, LastName, Email, and Password '}))
       console.log(this.state.error)
-    } else {
+    } else if (this.state.password !== this.state.password2) {
+      this.setState(() => ({error: 'Please provide matching passwords'}))
+    }
 
+    else {
+      firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage)
+         });
       this.setState(() => ({error: ''}))
       this.props.onSubmit({
         lastName: this.state.lastName,
@@ -101,8 +111,8 @@ export default class UserForm extends React.Component {
             type="text"
             placeholder="password"
             autoFocus
-            value={this.state.password}
-            onChange={this.onPasswordChange}/>
+            value={this.state.password2}
+            onChange={this.onPassword2Change}/>
 
 
         <button type="submit">Submit</button>
