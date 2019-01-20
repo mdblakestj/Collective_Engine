@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 
 const NewCampaign = (props) => (
   <div>
-      <h1>New Campaign</h1>
+      <h1>New Engine</h1>
       <CampaignForm
         onSubmit={(campaign) => {
           props.dispatch(startAddCampaign(campaign))

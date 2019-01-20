@@ -8,7 +8,8 @@ const Header = (props) => (
       <h1>Collective Engine</h1>
       <div className="home-link">
       <NavLink to="/home" activeClassName="is-active" exact={true}>Home  </NavLink>
-      <NavLink to="/NewCampaign" activeClassName="is-active">New Campaign  </NavLink>
+      <NavLink to="/NewCampaign" activeClassName="is-active">New Engine</NavLink>
+      {props.auth && <NavLink to="/MyCampaigns" activeClassName="is-active">My Engines</NavLink>}
       {!props.auth && <NavLink to="/" activeClassName="is-active">Sign In</NavLink>}
       {props.auth && <button onClick={props.startLogout}>Log Out</button>}
 

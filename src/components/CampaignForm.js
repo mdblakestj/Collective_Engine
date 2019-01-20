@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-// import { SingleDatePicker } from 'react-dates';
-// import 'react-dates/lib/css/_datepicker.css';
+import {firebase} from '../firebase/firebase'
+
 
 const now = moment();
 
@@ -14,6 +14,7 @@ export default class CampaignForm extends React.Component {
       description: props.campaign ? props.campaign.description :'',
       triggerNumber: props.campaign ? props.campaign.triggerNumber : '',
       createdAt: props.campaign ? moment(props.campaign.createdAt): moment(),
+      createdBy: props.campaign ? props.campaign.createdBy : '',
       error: ''
 
     }
@@ -27,10 +28,6 @@ export default class CampaignForm extends React.Component {
     const title = e.target.value;
     this.setState(() => ({title}))
   }
-  onNoteChange = (e) => {
-    const note = e.target.value;
-    this.setState(() => ({note}))
-  }
   onTriggerNumberChange = (e) => {
     const triggerNumber = e.target.value;
     this.setState(() => ({triggerNumber}))
@@ -41,9 +38,10 @@ export default class CampaignForm extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault()
-    if (!this.state.description) {
-      this.setState(() => ({error: 'Please provide description and amount'}))
-      console.log(this.state.error)
+    var user = firebase.auth().currentUser;
+    if (!this.state.description || !this.state.title || !this.state.triggerNumber) {
+      this.setState(() => ({error: 'Please provide title, description and trigger number'}))
+
     } else {
 
       this.setState(() => ({error: ''}))
@@ -52,7 +50,7 @@ export default class CampaignForm extends React.Component {
         description: this.state.description,
         createdAt: this.state.createdAt.valueOf(),
         triggerNumber: this.state.triggerNumber,
-        note: this.state.note
+        createdBy: user.uid
       })
     }
   }

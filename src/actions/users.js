@@ -16,12 +16,13 @@ export const startAddUser = (userData ={}) => {
       lastName = '',
       email = '',
       password = '',
+      authToken = '',
       createdAt=0
 
     } = userData;
-    const user = { firstName, lastName, email, password, createdAt};
+    const user = { firstName, lastName, email, password, authToken: uuid(), createdAt};
     database.ref('users').push(user).then((ref) => {
-      dispatch(adduser({
+      dispatch(addUser({
         id: ref.key,
         ...user
       }))
