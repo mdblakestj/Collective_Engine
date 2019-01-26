@@ -19,6 +19,7 @@ const CampaignDetails = (props) => (
           <p>{props.description}</p>
           <p> TriggerNumber: {props.triggerNumber}</p>
           <p>Created At: {props.createdAt}</p>
+          <img src={props.imageURL} height="300" width="400" />
           </div>
         </div>
 

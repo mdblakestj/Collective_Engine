@@ -15,7 +15,9 @@ const JoinEngine = (props) => (
           <button onClick={() => {
 
               props.dispatch(startEditCampaign(props.campaign.id, {members: [props.auth.uid]}))
+              props.history.push(`/campaign/${props.campaign.id}`)
               }
+
 
 
           }>Yes</button>
