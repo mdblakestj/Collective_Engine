@@ -16,10 +16,11 @@ export const startAddCampaign = (campaignData ={}) => {
       description = '',
       triggerNumber = 0,
       createdBy = '',
-      createdAt = 0
+      createdAt = 0,
+      members = []
 
     } = campaignData;
-    const campaign = { title, description, triggerNumber, createdAt, createdBy};
+    const campaign = { title, description, triggerNumber, createdAt, createdBy, members};
     database.ref('campaigns').push(campaign).then((ref) => {
       dispatch(addCampaign({
         id: ref.key,
@@ -30,6 +31,9 @@ export const startAddCampaign = (campaignData ={}) => {
 
   }
 }
+
+
+
 //REMOVE
 export const removeCampaign = ({id} = {}) => ({
   type: 'REMOVE_CAMPAIGN',
@@ -42,6 +46,14 @@ export const editCampaign = (id, updates) => ({
   updates
 }
 )
+
+export const startEditCampaign = (id, updates) => {
+  return (dispatch) => {
+    return database.ref(`campaigns/${id}`).update(updates).then(() =>{
+      dispatch(editCampaign(id, updates));
+    })
+  }
+}
 
 export const setCampaigns = (campaign) => ({
   type: 'SET_CAMPAIGNS',
