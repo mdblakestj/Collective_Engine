@@ -10,6 +10,7 @@ import LogIn from '../components/Login';
 import createHistory from 'history/createBrowserHistory';
 import PrivateRoute from './PrivateRoute'
 import MyCampaigns from '../components/MyCampaigns'
+import JoinEngine from '../components/JoinEngine'
 
 export const history = createHistory();
 
@@ -24,6 +25,7 @@ const AppRouter = () => (
         <Route path="/MyCampaigns" component={MyCampaigns}/>
         <Route path="/campaign/:id" component={Campaign} />
         <Route path="/NewUser" component={NewUser}/>
+        <Route path="/JoinEngine/:id" component={JoinEngine} />
 
       </Switch>
     </div>

@@ -15,6 +15,7 @@ export default class CampaignForm extends React.Component {
       triggerNumber: props.campaign ? props.campaign.triggerNumber : '',
       createdAt: props.campaign ? moment(props.campaign.createdAt): moment(),
       createdBy: props.campaign ? props.campaign.createdBy : '',
+      members: [],
       error: ''
 
     }
@@ -50,7 +51,8 @@ export default class CampaignForm extends React.Component {
         description: this.state.description,
         createdAt: this.state.createdAt.valueOf(),
         triggerNumber: this.state.triggerNumber,
-        createdBy: user.uid
+        createdBy: user.uid,
+        members: this.state.members
       })
     }
   }

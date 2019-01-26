@@ -3,27 +3,27 @@ import {connect} from 'react-redux'
 import CampaignDetails from './CampaignListItem'
 import getVisibleExpenses from '../selectors/expenses'
 import {firebase} from '../firebase/firebase'
+import getUserEngines from '../selectors/userEngines'
 
 const CampaignList = (props) => (
 
   <div className="campaign-list">
-    <h1> Campaigns </h1>
-    {props.campaigns.map((campaign) => {
-      var user = firebase.auth().currentUser;
-      if (campaign.createdBy === user.uid) {
+    <h1> My Engines </h1>
+    { getUserEngines(props.campaigns, props.auth).map((campaign) => {
       return (
 
         <CampaignDetails key={campaign.id} {...campaign} />
 
-      )}
-    })}
+      )})
+    }
   </div>
 )
 
 
 const mapStateToProps = (state) => {
   return {
-    campaigns: state.campaigns
+    campaigns: state.campaigns,
+    auth: state.auth
 
   }
 }

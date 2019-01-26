@@ -10,14 +10,14 @@ const campaignReducer = (state = campaignReducerDefaultState, action) => {
     case 'REMOVE_CAMPAIGN':
       return state.filter(({id}) => {return id != action.id})
     case 'EDIT_CAMPAIGN':
-      return state.map((expense) => {
-        if (expense.id === action.id) {
+      return state.map((campaign) => {
+        if (campaign.id === action.id) {
           return {
-            ...expense,
+            ...campaign,
             ...action.updates
           }
         } else {
-          return expense
+          return campaign
         }
       })
     case 'SET_CAMPAIGNS':

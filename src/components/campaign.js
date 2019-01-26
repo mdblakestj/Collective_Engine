@@ -13,7 +13,8 @@ const Campaign = (props) => {
             <h3> {props.campaign.description}</h3>
             <p> Trigger: {props.campaign.triggerNumber}</p>
             <p> Created At: {props.campaign.createdAt}</p>
-            
+            <button onClick={() => {props.history.push(`/JoinEngine/${props.campaign.id}`)}}>Join Engine!</button>
+
 
 
 
