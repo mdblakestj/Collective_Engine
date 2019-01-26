@@ -9,8 +9,10 @@ const NewCampaign = (props) => (
       <CampaignForm
         onSubmit={(campaign) => {
           props.dispatch(startAddCampaign(campaign))
-          props.history.push('/')
+          props.history.push(`/campaign/${props.campaign.id}`)
         }} />
+
+
 
   </div>
 )

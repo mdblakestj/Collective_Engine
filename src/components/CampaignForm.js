@@ -3,6 +3,7 @@ import moment from 'moment';
 import {firebase} from '../firebase/firebase'
 
 
+
 const now = moment();
 
 
@@ -16,9 +17,13 @@ export default class CampaignForm extends React.Component {
       createdAt: props.campaign ? moment(props.campaign.createdAt): moment(),
       createdBy: props.campaign ? props.campaign.createdBy : '',
       members: [],
-      error: ''
-
+      error: '',
+      imageURL: '',
+      image: null,
+      url: ''
     }
+    this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
+    this.fileUploadHandler = this.fileUploadHandler.bind(this);
   }
 
   onDescriptionChange = (e) => {
@@ -37,6 +42,7 @@ export default class CampaignForm extends React.Component {
     this.setState(() => ({createdAt}))
   }
 
+
   onSubmit = (e) => {
     e.preventDefault()
     var user = firebase.auth().currentUser;
@@ -52,11 +58,37 @@ export default class CampaignForm extends React.Component {
         createdAt: this.state.createdAt.valueOf(),
         triggerNumber: this.state.triggerNumber,
         createdBy: user.uid,
-        members: this.state.members
+        members: this.state.members,
+        imageURL: this.state.url
       })
     }
   }
+  fileSelectedHandler = (e) => {
+    const image = e.target.files[0];
+    this.setState(() => ({image}));
 
+  }
+  fileUploadHandler = () => {
+    const {image} = this.state
+    const uploadTask = firebase.storage().ref(`images/${image.name}`).put(image)
+    // const url = `gs://collective-engine.appspot.com/images/${image.name}`
+    firebase.storage().ref('images').child(image.name).getDownloadURL().then(url =>{
+      console.log(url);
+      this.setState(() => ({url}))
+
+    })
+
+    uploadTask.on('state_changed',
+      function progress(snapshot) {
+        var percentage = (snapshot.bytesTransfered/snapshot.totalBytes) * 100;
+        console.log(percentage);
+      }, function error(err) {
+        console.log(err)
+      }, function complete() {
+
+        }
+      )
+   }
 
   render() {
     return (
@@ -85,7 +117,13 @@ export default class CampaignForm extends React.Component {
           onChange={this.onTriggerNumberChange}/>
 
         <button>Form Submit</button>
+
       </form>
+      <input type="file" onChange={this.fileSelectedHandler}/>
+      <button onClick={this.fileUploadHandler}>Upload</button>
+      <br/>
+
+      <img src={this.state.url || 'http://via.placeholder.com/350x150'} alt="uploaded images" height="300" width="400" />
       </div>
     )
   }
