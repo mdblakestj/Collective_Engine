@@ -13,8 +13,9 @@ const JoinEngine = (props) => (
           <h3> Are you sure you want to join? </h3>
           <p>This is for REAL REAL </p>
           <button onClick={() => {
-
-              props.dispatch(startEditCampaign(props.campaign.id, {members: [props.auth.uid]}))
+              var newMembers = props.campaign.members
+              newMembers.push(props.auth.uid)
+              props.dispatch(startEditCampaign(props.campaign.id, {members: newMembers}))
               props.history.push(`/campaign/${props.campaign.id}`)
               }
 
