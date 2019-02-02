@@ -6,13 +6,19 @@ const CampaignList = (props) => (
 
   <div className="campaign-list">
     <h1> Engines </h1>
+    <div className="grid-container">
     {props.campaigns.map((campaign) => {
       return (
+        
+          <div className="grid-item">
+            <CampaignDetails key={campaign.id} {...campaign} />
+          </div>
 
-        <CampaignDetails key={campaign.id} {...campaign} />
+
 
       )
     })}
+    </div>
   </div>
 )
 

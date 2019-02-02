@@ -8,6 +8,13 @@ body {
 }
 }
 
+.campaign-box{
+  width: 300px;
+  border: 25px solid green;
+  padding: 25px;
+  margin: 25px;
+}
+
 .home-link {
 
   display: flex;
@@ -30,6 +37,31 @@ header {
 header a {
   color: #6CCFF6;
 
+}
+
+.grid-container {
+  display:grid;
+  grid-template-columns: auto auto auto;
+
+
+}
+
+.grid-item {
+  
+  max-width: 300px;
+  border: 1px;
+  border-color: gray;
+  border-style: solid;
+}
+
+.img-campaign {
+  max-width: 300px;
+  max-height: 300px;
+  width:auto;
+  height: auto;
+  border: 1px;
+  border-color: gray;
+  border-style: solid;
 }
 
 header h1 {
@@ -90,7 +122,7 @@ input {
 }
 
 .campaign-list {
-  margin-left: 33.33%;
+
   align-items: center;
 }
 
