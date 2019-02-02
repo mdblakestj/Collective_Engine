@@ -58,7 +58,7 @@ export default class CampaignForm extends React.Component {
         createdAt: this.state.createdAt.valueOf(),
         triggerNumber: this.state.triggerNumber,
         createdBy: user.uid,
-        members: this.state.members,
+        members: [user.uid],
         imageURL: this.state.url
       })
     }

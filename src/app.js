@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import './styles/styles.scss'
 import AppRouter, {history} from './routers/AppRouter'
 import { Provider } from 'react-redux';
-import './styles/styles.scss';
 import configureStore from './store/configureStore';
 import {startSetCampaigns} from './actions/campaigns';
 // import {setTextFilter} from './actions/filters';
