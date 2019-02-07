@@ -102,13 +102,13 @@ export default class UserForm extends React.Component {
           value={this.state.email}
           onChange={this.onEmailChange}/>
         <input
-            type="text"
+            type="password"
             placeholder="password"
             autoFocus
             value={this.state.password}
             onChange={this.onPasswordChange}/>
         <input
-            type="text"
+            type="password"
             placeholder="password"
             autoFocus
             value={this.state.password2}

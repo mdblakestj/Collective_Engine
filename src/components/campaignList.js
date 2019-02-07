@@ -2,23 +2,27 @@ import React from 'react'
 import {connect} from 'react-redux'
 import CampaignDetails from './CampaignListItem'
 import getVisibleExpenses from '../selectors/expenses'
+import {Container,Row, Col} from 'react-bootstrap'
 const CampaignList = (props) => (
 
   <div className="campaign-list">
     <h1> Engines </h1>
-    <div className="grid-container">
+    <Container>
     {props.campaigns.map((campaign) => {
       return (
-        
-          <div className="grid-item">
+
+          <Row>
             <CampaignDetails key={campaign.id} {...campaign} />
-          </div>
+
+          </Row>
+
+
 
 
 
       )
     })}
-    </div>
+    </Container>
   </div>
 )
 
