@@ -47,7 +47,7 @@ header a {
 }
 
 .grid-item {
-  
+
   max-width: 300px;
   border: 1px;
   border-color: gray;
@@ -95,6 +95,10 @@ input {
   border-radius: 6px;
   margin: 5px;
   font-size: 100%;
+}
+
+.form-style {
+  box-sizing: border-box;
 }
 
 .campaign-title h3 {

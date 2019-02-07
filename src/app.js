@@ -10,6 +10,7 @@ import {startSetCampaigns} from './actions/campaigns';
 // import getVisibleExpenses from './selectors/expenses'
 import {firebase} from './firebase/firebase'
 import {login, logout} from './actions/auth'
+import "./../node_modules/bootstrap/scss/bootstrap.scss"
 
 const store = configureStore();
 
