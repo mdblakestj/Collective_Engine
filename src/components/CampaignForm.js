@@ -9,7 +9,6 @@ import Form from 'react-bootstrap/Form'
 
 const now = moment();
 
-
 export default class CampaignForm extends React.Component {
   constructor(props) {
     super(props);
@@ -95,7 +94,7 @@ export default class CampaignForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form-div">
       {this.state.error && <p>{this.state.error}</p>}
       <Form>
   <Form.Row>
@@ -144,46 +143,52 @@ export default class CampaignForm extends React.Component {
     <Form.Check type="checkbox" label="Check me out" />
   </Form.Group>
 
-  <Button variant="primary" type="submit">
+  <Button className="btn btn-outline-info" id="submit-button" type="submit">
     Submit
   </Button>
-</Form>;
+</Form>
+  <div className="campaign-form">
+  <h1 className="campaign-h1">Campaign Info</h1>
+      <Form onSubmit={this.onSubmit}>
+        <Form.Row>
+          <Form.Group>
+            <input
+             type="text"
+             placeholder="Title"
+             autoFocus
+             value={this.state.title}
+             onChange={this.onTitleChange}/>
+           </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group>
+            <input
+             type="text"
+             placeholder="Description"
+             autoFocus
+             value={this.state.description}
+             onChange={this.onDescriptionChange}/>
+           </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group>
+             <input
+              type="number"
+              placeholder="Trigger Number"
+              autoFocus
+              value={this.state.triggerNumber}
+              onChange={this.onTriggerNumberChange}/>
+            </Form.Group>
+         </Form.Row>
+        <button className="btn btn-outline-info" id="google-button">Form Submit</button>
 
-
-
-
-
-
-
-
-      <form onSubmit={this.onSubmit}>
-        <input
-         type="text"
-         placeholder="Title"
-         autoFocus
-         value={this.state.title}
-         onChange={this.onTitleChange}/>
-        <input
-         type="text"
-         placeholder="Description"
-         autoFocus
-         value={this.state.description}
-         onChange={this.onDescriptionChange}/>
-         <input
-          type="number"
-          placeholder="Trigger Number"
-          autoFocus
-          value={this.state.triggerNumber}
-          onChange={this.onTriggerNumberChange}/>
-
-        <button>Form Submit</button>
-
-      </form>
+      </Form>
       <input type="file" onChange={this.fileSelectedHandler}/>
-      <button onClick={this.fileUploadHandler}>Upload</button>
+      <button className="btn btn-outline-info" id="google-button" onClick={this.fileUploadHandler}>Upload</button>
       <br/>
 
       <img src={this.state.url || 'http://via.placeholder.com/350x150'} alt="uploaded images" height="300" width="400" />
+      </div>
       </div>
     )
   }

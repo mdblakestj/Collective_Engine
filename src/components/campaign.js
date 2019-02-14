@@ -5,24 +5,17 @@ import moment from 'moment'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 const Campaign = (props) => {
 
-  return (
-
-
-        <div>
-
-            <h3> {props.campaign.title}</h3>
-            <h3> {props.campaign.description}</h3>
-            <p>Created: {moment(props.createdAt).format("dddd, MMMM Do YYYY")}</p>
-            <p> Members: {props.campaign.members.length}/{props.campaign.triggerNumber}</p>
-            <progress max="100" value={(props.campaign.members.length/props.campaign.triggerNumber)*100}></progress>
-            <p> {props.campaign.members.length < props.campaign.triggerNumber ? ` ${props.campaign.triggerNumber - props.campaign.members.length} more members until engine launched` : 'Engine Launched!'} </p>
-            <img src={props.campaign.imageURL} height="300" width="400" />
-            {props.auth.uid && <button onClick={() => {props.history.push(`/JoinEngine/${props.campaign.id}`)}}>Join Engine!</button>}
-
-
-
-
-        </div>
+return (
+  <div>
+    <h3> {props.campaign.title}</h3>
+    <h3> {props.campaign.description}</h3>
+    <p>Created: {moment(props.createdAt).format("dddd, MMMM Do YYYY")}</p>
+    <p> Members: {props.campaign.members.length}/{props.campaign.triggerNumber}</p>
+    <progress max="100" value={(props.campaign.members.length/props.campaign.triggerNumber)*100}></progress>
+    <p> {props.campaign.members.length < props.campaign.triggerNumber ? ` ${props.campaign.triggerNumber - props.campaign.members.length} more members until engine launched` : 'Engine Launched!'} </p>
+    <img src={props.campaign.imageURL} height="300" width="400" />
+    {props.auth.uid && <button onClick={() => {props.history.push(`/JoinEngine/${props.campaign.id}`)}}>Join Engine!</button>}
+  </div>
 
     )
 

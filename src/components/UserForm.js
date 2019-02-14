@@ -115,7 +115,7 @@ export default class UserForm extends React.Component {
             onChange={this.onPassword2Change}/>
 
 
-        <button type="submit">Submit</button>
+        <button className="btn btn-outline-info" type="submit">Submit</button>
       </form>
       </div>
     )
