@@ -67,7 +67,7 @@ export default class LoginForm extends React.Component {
             autoFocus
             value={this.state.password}
             onChange={this.onPasswordChange}/>
-        <button type="submit">Submit</button>
+        <button className="btn btn-outline-info" type="submit">Submit</button>
       </form>
       </div>
     )

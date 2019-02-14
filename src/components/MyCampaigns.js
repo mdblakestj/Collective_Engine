@@ -4,11 +4,16 @@ import CampaignDetails from './CampaignListItem'
 import getVisibleExpenses from '../selectors/expenses'
 import {firebase} from '../firebase/firebase'
 import getUserEngines from '../selectors/userEngines'
+import {Container,Row, Col} from 'react-bootstrap'
 
 const CampaignList = (props) => (
 
   <div className="campaign-list">
-    <h1> My Engines </h1>
+  <Container>
+    <Row>
+      <h1 className="new-engine">My Engines</h1>
+    </Row>
+  </Container>
     { getUserEngines(props.campaigns, props.auth).map((campaign) => {
       return (
 
@@ -18,7 +23,6 @@ const CampaignList = (props) => (
     }
   </div>
 )
-
 
 const mapStateToProps = (state) => {
   return {

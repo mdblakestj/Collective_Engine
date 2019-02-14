@@ -6,8 +6,10 @@ import {Container,Row, Col} from 'react-bootstrap'
 const CampaignList = (props) => (
 
   <div className="campaign-list">
-    <h1> Engines </h1>
     <Container>
+      <Row>
+        <h1> Engines </h1>
+      </Row>
     {props.campaigns.map((campaign) => {
       return (
 
@@ -15,9 +17,6 @@ const CampaignList = (props) => (
             <CampaignDetails key={campaign.id} {...campaign} />
 
           </Row>
-
-
-
 
 
       )
