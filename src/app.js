@@ -11,6 +11,7 @@ import {startSetCampaigns} from './actions/campaigns';
 import {firebase} from './firebase/firebase'
 import {login, logout} from './actions/auth'
 import "./../node_modules/bootstrap/scss/bootstrap.scss"
+import LoadingPage from './components/LoadingPage'
 
 const store = configureStore();
 
@@ -30,7 +31,7 @@ const renderApp = () => {
   }
 }
 store.dispatch(startSetCampaigns())
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 
 firebase.auth().onAuthStateChanged((user) => {

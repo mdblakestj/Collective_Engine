@@ -14,7 +14,7 @@ const CampaignDetails = (props) => (
   <Container>
     <Row>
       <h3 className="campaign-link">
-      <NavLink to={`/campaign/${props.id}`} activeClassName="is-active">{props.title}</NavLink>
+      <NavLink to={`/campaign/${props.id}`} >{props.title}</NavLink>
       </h3>
      </Row>
      <Row>
