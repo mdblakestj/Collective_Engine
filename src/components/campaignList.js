@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import CampaignDetails from './CampaignListItem'
 import getVisibleExpenses from '../selectors/expenses'
 import {Container,Row, Col} from 'react-bootstrap'
-const CampaignList = (props) => (
+export const CampaignList = (props) => (
 
   <div className="campaign-list">
     <Container>
