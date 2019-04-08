@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme';
-import {campaignList} from '../../components/campaignList'
-import campaigns from '../fixtures/expenses'
+import {CampaignList} from '../../components/campaignList'
+import campaigns from '../fixtures/campaigns'
 
 test('should render CampaignList with campaigns', () => {
-  const wrapper = shallow(<ExpenseList campaigns=(campaigns)/>)
+  const wrapper = shallow(<CampaignList campaigns={campaigns}/>)
   expect(wrapper).toMatchSnapshot();
 })
