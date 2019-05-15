@@ -18,10 +18,11 @@ export const startAddCampaign = (campaignData ={}) => {
       createdBy = '',
       createdAt = 0,
       members = [],
-      imageURL = ''
+      imageURL = '',
+      launched = false
 
     } = campaignData;
-    const campaign = { title, description, triggerNumber, createdAt, createdBy, members, imageURL};
+    const campaign = { title, description, triggerNumber, createdAt, createdBy, members, imageURL, launched};
     database.ref('campaigns').push(campaign).then((ref) => {
       dispatch(addCampaign({
         id: ref.key,
