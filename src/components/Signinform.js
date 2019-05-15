@@ -51,10 +51,10 @@ export default class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="box-layout">
       {this.state.error && <p>{this.state.error}</p>}
 
-    <form onSubmit={this.onSubmit}>
+     <form onSubmit={this.onSubmit}>
         <input
           type="text"
           placeholder="email"
