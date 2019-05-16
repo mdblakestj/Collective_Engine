@@ -1,21 +1,10 @@
-import React from 'react'
-import CampaignList from './CampaignList'
-
-// import ExpenseListFilters from './ExpenseListFilters'
-
-
-
+import React from "react";
+import CampaignList from "./CampaignList";
 
 const Home = () => (
   <div>
-
-      <CampaignList/>
-
-
-
+    <CampaignList />
   </div>
-)
-
-
+);
 
 export default Home;

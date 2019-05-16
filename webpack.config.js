@@ -1,10 +1,14 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 
 module.exports = (env) => {
   const isProduction = env === 'production';
 
   return {
+    plugins: [
+    new Dotenv()
+  ],
     entry: "./src/app.js",
     output: {
       path: path.join(__dirname, 'public'),

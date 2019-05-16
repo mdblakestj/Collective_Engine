@@ -14,16 +14,15 @@ const JoinEngine = (props) => (
           <p>This is for REAL REAL </p>
           <button onClick={() => {
               var newMembers = props.campaign.members
-              var launched = props.campaign.launched
+              var launchState = props.campaign.launched
               newMembers.push(props.auth.uid)
-              if(newMembers === props.campaign.triggerNumber) {
-                launched = true;
+              if(newMembers.length == props.campaign.triggerNumber) {
+                launchState = true;
               }
-              props.dispatch(startEditCampaign(props.campaign.id, {members: newMembers, launched: launched }))
+              console.log(process.env.API_URL)
+              props.dispatch(startEditCampaign(props.campaign.id, {members: newMembers, launched: launchState }))
               props.history.push(`/campaign/${props.campaign.id}`)
               }
-
-
 
           }>Yes</button>
           </div>
