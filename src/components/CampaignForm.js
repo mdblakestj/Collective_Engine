@@ -21,7 +21,8 @@ export default class CampaignForm extends React.Component {
       error: "",
       imageURL: "",
       image: null,
-      url: ""
+      url: "",
+      emailList: ""
     };
     this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
     this.fileUploadHandler = this.fileUploadHandler.bind(this);
@@ -63,7 +64,8 @@ export default class CampaignForm extends React.Component {
         triggerNumber: this.state.triggerNumber,
         createdBy: user.uid,
         members: [user.uid],
-        imageURL: this.state.url
+        imageURL: this.state.url,
+        emailList: user.email
       });
     }
   };

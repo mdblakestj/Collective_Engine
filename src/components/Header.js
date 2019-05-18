@@ -53,8 +53,6 @@ const Header = props => (
 const mapDispatchToProps = dispatch => ({
   startLogout: () => dispatch(startLogout())
 });
-//
-// export default connect(undefined, mapDispatchToProps)(Header);
 
 const mapStateToProps = (state, props, dispatch) => {
   return {
