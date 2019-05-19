@@ -11,7 +11,7 @@ export const CampaignList = props => (
       </Row>
       {props.campaigns.map(campaign => {
         return (
-          <Row>
+          <Row key={campaign.id}>
             <CampaignDetails key={campaign.id} {...campaign} />
           </Row>
         );

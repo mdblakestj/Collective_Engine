@@ -7,7 +7,6 @@ import NewUser from "../components/NewUser.js";
 import Home from "../components/Home.js";
 import Campaign from "../components/Campaign";
 import LogIn from "../components/Login";
-// import createHistory from 'history/createBrowserHistory';
 import { createBrowserHistory } from "history";
 import PrivateRoute from "./PrivateRoute";
 import MyCampaigns from "../components/MyCampaigns";
