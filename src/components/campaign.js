@@ -6,8 +6,8 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 const Campaign = props => {
   return (
     <div>
-      <h3> {props.campaign.title}</h3>
-      <h3> {props.campaign.description}</h3>
+      <h3 className="campaign-title"> {props.campaign.title}</h3>
+      <h5> {props.campaign.description}</h5>
       <p>Created: {moment(props.createdAt).format("dddd, MMMM Do YYYY")}</p>
       <p>
         {" "}
@@ -26,7 +26,10 @@ const Campaign = props => {
               props.campaign.members.length} more members until engine launched`
           : "Engine Launched!"}{" "}
       </p>
-      <img src={props.campaign.imageURL} height="300" width="400" />
+      <br />
+      <img src={props.campaign.imageURL} className="img-campaign" />
+      <br />
+      <br />
       {props.auth.uid && (
         <button
           onClick={() => {
