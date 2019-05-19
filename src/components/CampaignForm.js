@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { Row, Col } from "react-bootstrap";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 const now = moment();
 
@@ -22,7 +23,8 @@ export default class CampaignForm extends React.Component {
       imageURL: "",
       image: null,
       url: "",
-      emailList: ""
+      emailList: "",
+      uploadPercentage: 0
     };
     this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
     this.fileUploadHandler = this.fileUploadHandler.bind(this);
@@ -85,15 +87,15 @@ export default class CampaignForm extends React.Component {
       .child(image.name)
       .getDownloadURL()
       .then(url => {
-        console.log(url);
         this.setState(() => ({ url }));
       });
 
     uploadTask.on(
       "state_changed",
-      function progress(snapshot) {
-        var percentage = (snapshot.bytesTransfered / snapshot.totalBytes) * 100;
-        console.log(percentage);
+      snapshot => {
+        var percentage =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        this.setState({ uploadPercentage: percentage });
       },
       function error(err) {
         console.log(err);
@@ -124,22 +126,24 @@ export default class CampaignForm extends React.Component {
             <Form.Row>
               <Form.Group>
                 <input
-                  type="text"
-                  placeholder="Description"
-                  autoFocus
-                  value={this.state.description}
-                  onChange={this.onDescriptionChange}
-                />
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group>
-                <input
                   type="number"
                   placeholder="Trigger Number"
                   autoFocus
                   value={this.state.triggerNumber}
                   onChange={this.onTriggerNumberChange}
+                />
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group>
+                <textarea
+                  rows="4"
+                  cols="50"
+                  type="text"
+                  placeholder="Description"
+                  autoFocus
+                  value={this.state.description}
+                  onChange={this.onDescriptionChange}
                 />
               </Form.Group>
             </Form.Row>
@@ -156,9 +160,18 @@ export default class CampaignForm extends React.Component {
             Upload
           </button>
           <br />
+          {this.state.uploadPercentage && this.state.uploadPercentage < 100 && (
+            <ProgressBar
+              style={{ width: "200px" }}
+              now={this.state.uploadPercentage}
+            />
+          )}
 
           <img
-            src={this.state.url || "http://via.placeholder.com/350x150"}
+            src={
+              this.state.url ||
+              "https://wiki.tripwireinteractive.com/images/4/47/Placeholder.png"
+            }
             alt="uploaded images"
             height="300"
             width="400"

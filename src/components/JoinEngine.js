@@ -19,7 +19,7 @@ const JoinEngine = props => (
             newMembers.push(props.auth.uid);
             var userEmail = firebase.auth().currentUser.email;
             var emailList = props.campaign.emailList;
-            userEmail = emailList + ", " + userEmail;
+            emailList = emailList + ", " + userEmail;
 
             if (newMembers.length == props.campaign.triggerNumber) {
               launchState = true;
@@ -47,7 +47,8 @@ const JoinEngine = props => (
             props.dispatch(
               startEditCampaign(props.campaign.id, {
                 members: newMembers,
-                launched: launchState
+                launched: launchState,
+                emailList: emailList
               })
             );
             props.history.push(`/campaign/${props.campaign.id}`);

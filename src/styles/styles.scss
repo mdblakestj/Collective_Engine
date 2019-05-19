@@ -23,7 +23,6 @@ body {
 }
 
 .campaign-form {
-  margin-left: 10px;
 }
 
 form {
@@ -142,8 +141,8 @@ button {
 }
 
 .img-campaign {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 500px;
+  max-height: 400px;
   width: auto;
   height: auto;
   border: 1px;
@@ -170,8 +169,13 @@ input {
   font-size: 30px;
 }
 
+.campaign-title {
+  color: #282828;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
 .campaign-link {
-  max-width: 300px;
   color: #282828;
 }
 
@@ -182,7 +186,7 @@ input {
 .campaign-list h4 {
   padding-top: 20px;
   color: #282828;
-  padding-left: 15px;
+  // padding-left: 15px;
   // letter-spacing: 0.5em;
 }
 
