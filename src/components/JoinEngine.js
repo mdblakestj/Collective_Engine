@@ -24,13 +24,14 @@ const JoinEngine = props => (
             if (newMembers.length == props.campaign.triggerNumber) {
               launchState = true;
               var templateParams = {
-                to_name: "James",
-                members: emailList
+                members: emailList,
+                engine_name: props.campaign.title,
+                created_By: props.campaign.createdBy
               };
               emailjs
                 .send(
                   "gmail",
-                  process.env.EMAILJS_TEMP,
+                  "campaign_launch",
                   templateParams,
                   process.env.EMAILJS_USERID
                 )
