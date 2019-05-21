@@ -5,3 +5,10 @@
 /src/firebase
 
 .env
+
+//ignore all generated webpack files
+
+public/bundle.js
+public/bundle.js.map
+public/styles.css
+public/styles.css.map
