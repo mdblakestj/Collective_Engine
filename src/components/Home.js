@@ -1,5 +1,5 @@
 import React from "react";
-import CampaignList from "./CampaignList";
+import CampaignList from "./campaignList";
 
 const Home = () => (
   <div>
