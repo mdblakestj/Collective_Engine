@@ -2,9 +2,6 @@
 
 /node_modules
 
-/src/firebase
-
-.env
 
 //ignore all generated webpack files
 
