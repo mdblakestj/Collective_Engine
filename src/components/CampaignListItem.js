@@ -3,16 +3,24 @@ import { connect } from "react-redux";
 import { BrowserRouter, Route, Switch, Link, NavLink } from "react-router-dom";
 import moment from "moment";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import { Container, Row, Col } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Card,
+  Button,
+  Carousel
+} from "react-bootstrap";
 
 const CampaignDetails = props => (
   <div className="campaign-title">
     <hr />
     <Row>
       <Col>
-        <img
-          className="img-campaign"
+        <Image
           src={props.imageURL}
+          fluid
           style={{ borderBottom: "10px #357462 solid" }}
         />
       </Col>

@@ -3,50 +3,40 @@ import { startLogin } from "../actions/auth";
 import { connect } from "react-redux";
 import LoginForm from "./Signinform";
 import { NavLink } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 const LogIn = props => (
-  <div>
-    <Container>
-      <h1 className="sign-in">Sign-in Using</h1>
-      <Row className="login-form">
-        <Col>
-          <LoginForm />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>Or</h2>
-          <p />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <button
-            className="btn btn-outline-info"
-            id="google-button"
-            onClick={props.startLogin}
-          >
-            Google
-          </button>
-        </Col>
-      </Row>
-      <div className="sign-up">
-        <Row>
-          <Col>
-            <p>New to Collective Engine?</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <NavLink to="/NewUser" activeClassName="is-active">
-              {" "}
-              <h1>Sign Up!</h1>
-            </NavLink>
-          </Col>
-        </Row>
-      </div>
-    </Container>
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "90vh",
+      backgroundColor: "#F0F0F0"
+    }}
+  >
+    <br />
+    <Card className="text-center" style={{ width: "25rem" }}>
+      <br />
+      <h1>Log in</h1>
+      <Card.Body>
+        <LoginForm />
+        <h3>Or</h3>
+        <button
+          className="btn btn-outline-info"
+          id="google-button"
+          onClick={props.startLogin}
+        >
+          Google
+        </button>
+        <hr data-content="OR" />
+        <h5>New to Collective engine?</h5>
+        <NavLink to="/NewUser" activeClassName="is-active">
+          {" "}
+          <h7>Sign Up!</h7>
+        </NavLink>
+      </Card.Body>
+    </Card>
   </div>
 );
 const mapDispatchToProps = dispatch => ({

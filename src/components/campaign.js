@@ -6,7 +6,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 const Campaign = props => {
   return (
     <div>
-      <h3 className="campaign-title"> {props.campaign.title}</h3>
+      <h1 className="campaign-title"> {props.campaign.title}</h1>
       <h5> {props.campaign.description}</h5>
       <p>Created: {moment(props.createdAt).format("dddd, MMMM Do YYYY")}</p>
       <p>

@@ -64,15 +64,17 @@ export default class LoginForm extends React.Component {
             value={this.state.email}
             onChange={this.onEmailChange}
           />
+          <br />
+          <br />
           <input
-            type="text"
+            type="password"
             placeholder="password"
             autoFocus
             value={this.state.password}
             onChange={this.onPasswordChange}
           />
           <button className="btn btn-outline-info" type="submit">
-            Submit
+            Log me in!
           </button>
         </form>
       </div>

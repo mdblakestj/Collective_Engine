@@ -19,17 +19,15 @@ const AppRouter = () => (
   <Router history={history}>
     <div>
       <Header />
-      <Container>
-        <Switch>
-          <Route path="/" component={LogIn} exact={true} />
-          <Route path="/Home" component={Home} />
-          <PrivateRoute path="/NewCampaign" component={NewCampaign} />
-          <Route path="/MyCampaigns" component={MyCampaigns} />
-          <Route path="/campaign/:id" component={Campaign} />
-          <Route path="/NewUser" component={NewUser} />
-          <Route path="/JoinEngine/:id" component={JoinEngine} />
-        </Switch>
-      </Container>
+      <Switch>
+        <Route path="/" component={LogIn} exact={true} />
+        <Route path="/Home" component={Home} />
+        <PrivateRoute path="/NewCampaign" component={NewCampaign} />
+        <Route path="/MyCampaigns" component={MyCampaigns} />
+        <Route path="/campaign/:id" component={Campaign} />
+        <Route path="/NewUser" component={NewUser} />
+        <Route path="/JoinEngine/:id" component={JoinEngine} />
+      </Switch>
     </div>
   </Router>
 );
