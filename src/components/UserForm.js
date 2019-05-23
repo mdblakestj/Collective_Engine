@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import Foundation from "react-foundation";
 import { firebase } from "../firebase/firebase";
+import { Container, Row, Col, Card, CardDeck, Button } from "react-bootstrap";
 
 const now = moment();
 
@@ -83,9 +84,7 @@ export default class UserForm extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-
+      <div style={{ display: "flex" }}>
         <form onSubmit={this.onSubmit}>
           <input
             type="text"
@@ -94,6 +93,8 @@ export default class UserForm extends React.Component {
             value={this.state.firstName}
             onChange={this.onfirstNameChange}
           />
+          <br />
+          <br />
           <input
             type="text"
             placeholder="last name"
@@ -101,6 +102,8 @@ export default class UserForm extends React.Component {
             value={this.state.lastName}
             onChange={this.onlastNameChange}
           />
+          <br />
+          <br />
           <input
             type="text"
             placeholder="email"
@@ -108,6 +111,8 @@ export default class UserForm extends React.Component {
             value={this.state.email}
             onChange={this.onEmailChange}
           />
+          <br />
+          <br />
           <input
             type="password"
             placeholder="password"
@@ -115,6 +120,7 @@ export default class UserForm extends React.Component {
             value={this.state.password}
             onChange={this.onPasswordChange}
           />
+          <br />
           <input
             type="password"
             placeholder="password"
@@ -122,10 +128,10 @@ export default class UserForm extends React.Component {
             value={this.state.password2}
             onChange={this.onPassword2Change}
           />
-
           <button className="btn btn-outline-info" type="submit">
-            Submit
+            Create Account
           </button>
+          {this.state.error && <p>{this.state.error}</p>}
         </form>
       </div>
     );
