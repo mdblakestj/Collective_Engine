@@ -7,16 +7,15 @@ import { Container, Row, Col } from "react-bootstrap";
 const NewCampaign = props => (
   <div>
     <Container>
-      <Row>
-        <h3 className="campaign-title">New Engine</h3>
-      </Row>
+      <h3 className="campaign-title">New Engine</h3>
+
+      <CampaignForm
+        onSubmit={campaign => {
+          props.dispatch(startAddCampaign(campaign));
+          props.history.push(`/home`);
+        }}
+      />
     </Container>
-    <CampaignForm
-      onSubmit={campaign => {
-        props.dispatch(startAddCampaign(campaign));
-        props.history.push(`/home`);
-      }}
-    />
   </div>
 );
 

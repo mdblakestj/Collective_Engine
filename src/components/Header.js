@@ -5,7 +5,12 @@ import { startLogout } from "../actions/auth";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 const Header = props => (
-  <header>
+  <header
+    style={{
+      padding: "10px 0px 10px 0px",
+      borderBottom: "1px solid #E8E8E8"
+    }}
+  >
     <Container>
       <Row>
         <Col>

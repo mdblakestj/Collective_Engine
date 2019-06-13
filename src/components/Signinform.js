@@ -53,7 +53,7 @@ export default class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="box-layout">
+      <div>
         {this.state.error && <p>{this.state.error}</p>}
 
         <form onSubmit={this.onSubmit}>
@@ -73,7 +73,15 @@ export default class LoginForm extends React.Component {
             value={this.state.password}
             onChange={this.onPasswordChange}
           />
-          <button className="btn btn-outline-info" type="submit">
+          <button
+            style={{
+              width: "180px",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+            className="btn btn-outline-info"
+            type="submit"
+          >
             Log me in!
           </button>
         </form>

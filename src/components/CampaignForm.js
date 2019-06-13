@@ -106,11 +106,11 @@ export default class CampaignForm extends React.Component {
 
   render() {
     return (
-      <div className="form-div">
+      <div>
         {this.state.error && <p>{this.state.error}</p>}
 
         <div className="campaign-form">
-          <h1 className="campaign-h1">Campaign Info</h1>
+          <h5>Campaign Info</h5>
           <Form onSubmit={this.onSubmit}>
             <Form.Row>
               <Form.Group>
