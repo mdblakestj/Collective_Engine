@@ -5,60 +5,65 @@ import { startEditCampaign } from "../actions/campaigns";
 import { startAddCampaign } from "../actions/campaigns";
 import * as emailjs from "emailjs-com";
 import { firebase } from "../firebase/firebase";
+import { Container } from "react-bootstrap";
 
 const JoinEngine = props => (
-  <div className="grid-x grid-padding-x small-up-1 medium-up-3 large-up-3">
-    <div className="cell">
-      <div className="campaign-title">
-        <h3> Are you sure you want to join? </h3>
-        <p>This is for REAL REAL </p>
-        <button
-          onClick={() => {
-            var newMembers = props.campaign.members;
-            var launchState = props.campaign.launched;
-            newMembers.push(props.auth.uid);
-            var userEmail = firebase.auth().currentUser.email;
-            var emailList = props.campaign.emailList;
-            emailList = emailList + ", " + userEmail;
+  <div>
+    <Container>
+      <h3 style={{ padding: "25px 0px 25px" }}>
+        {" "}
+        Are you sure you want to join?{" "}
+      </h3>
+      <p>
+        This is for REAL! By signing up for this campaign you are committing to
+        taking part upon its launch.
+      </p>
+      <button
+        onClick={() => {
+          var newMembers = props.campaign.members;
+          var launchState = props.campaign.launched;
+          newMembers.push(props.auth.uid);
+          var userEmail = firebase.auth().currentUser.email;
+          var emailList = props.campaign.emailList;
+          emailList = emailList + ", " + userEmail;
 
-            if (newMembers.length == props.campaign.triggerNumber) {
-              launchState = true;
-              var templateParams = {
-                members: emailList,
-                engine_name: props.campaign.title,
-                created_By: props.campaign.createdBy
-              };
-              emailjs
-                .send(
-                  "gmail",
-                  "campaign_launch",
-                  templateParams,
-                  process.env.EMAILJS_USERID
-                )
-                .then(
-                  function(response) {
-                    console.log("SUCCESS!", response.status, response.text);
-                  },
-                  function(error) {
-                    console.log("FAILED...", error);
-                  }
-                );
-            }
+          if (newMembers.length == props.campaign.triggerNumber) {
+            launchState = true;
+            var templateParams = {
+              members: emailList,
+              engine_name: props.campaign.title,
+              created_By: props.campaign.createdBy
+            };
+            emailjs
+              .send(
+                "gmail",
+                "campaign_launch",
+                templateParams,
+                process.env.EMAILJS_USERID
+              )
+              .then(
+                function(response) {
+                  console.log("SUCCESS!", response.status, response.text);
+                },
+                function(error) {
+                  console.log("FAILED...", error);
+                }
+              );
+          }
 
-            props.dispatch(
-              startEditCampaign(props.campaign.id, {
-                members: newMembers,
-                launched: launchState,
-                emailList: emailList
-              })
-            );
-            props.history.push(`/campaign/${props.campaign.id}`);
-          }}
-        >
-          Yes
-        </button>
-      </div>
-    </div>
+          props.dispatch(
+            startEditCampaign(props.campaign.id, {
+              members: newMembers,
+              launched: launchState,
+              emailList: emailList
+            })
+          );
+          props.history.push(`/campaign/${props.campaign.id}`);
+        }}
+      >
+        Yes
+      </button>
+    </Container>
   </div>
 );
 

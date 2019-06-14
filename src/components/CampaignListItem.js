@@ -3,15 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter, Route, Switch, Link, NavLink } from "react-router-dom";
 import moment from "moment";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import {
-  Container,
-  Row,
-  Col,
-  Image,
-  Card,
-  Button,
-  Carousel
-} from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 
 const CampaignDetails = props => (
   <div className="campaign-title">
@@ -28,9 +20,11 @@ const CampaignDetails = props => (
         <h3 className="campaign-link">
           <NavLink to={`/campaign/${props.id}`}>{props.title}</NavLink>
         </h3>
-        <h4>{props.launched && "  Engine Launched!"}</h4>
-        <p>Created: {moment(props.createdAt).format("dddd, MMMM Do YYYY")}</p>
-        <h2>{props.description}</h2>
+        <h4 style={{ color: "red" }}>
+          {props.launched && "  Engine Launched!"}
+        </h4>
+        <h5>Created: {moment(props.createdAt).format("dddd, MMMM Do YYYY")}</h5>
+        <p>{props.description}</p>
         <p>
           {" "}
           Members: {props.members.length}/{props.triggerNumber}
