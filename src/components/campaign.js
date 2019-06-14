@@ -13,50 +13,60 @@ const Campaign = props => {
     >
       {" "}
       <Container>
-        <h1>{props.campaign.title}</h1>
+        <h1 style={{ textAlign: "center", padding: "25px 0px 5px" }}>
+          {props.campaign.title}
+        </h1>
+        <h5 style={{ textAlign: "center", padding: "20px 0px 30px" }}>
+          {props.campaign.description}
+        </h5>
+        <hr />
 
-        <Row>
+        <Row style={{ padding: "25px 0px 25px" }}>
           <Col>
             <img src={props.campaign.imageURL} className="img-campaign" />
           </Col>
-          <br />
-          <h5> {props.campaign.description}</h5>
-          <br />
-          <p>Created: {moment(props.createdAt).format("dddd, MMMM Do YYYY")}</p>
-          <br />
-          <p>
-            {" "}
-            Members: {props.campaign.members.length}/
-            {props.campaign.triggerNumber}
-          </p>
-          <progress
-            max="100"
-            value={
-              (props.campaign.members.length / props.campaign.triggerNumber) *
-              100
-            }
-          />
-          <p>
-            {" "}
-            {props.campaign.members.length < props.campaign.triggerNumber
-              ? ` ${props.campaign.triggerNumber -
-                  props.campaign.members
-                    .length} more members until engine launched`
-              : "Engine Launched!"}{" "}
-          </p>
-          <br />
-          <img src={props.campaign.imageURL} className="img-campaign" />
-          <br />
-          <br />
-          {props.auth.uid && (
-            <button
-              onClick={() => {
-                props.history.push(`/JoinEngine/${props.campaign.id}`);
-              }}
-            >
-              Join Engine!
-            </button>
-          )}
+          <Col>
+            <br />
+            <h5> {props.campaign.description}</h5>
+            <br />
+            <p>
+              Created: {moment(props.createdAt).format("dddd, MMMM Do YYYY")}
+            </p>
+            <br />
+            <p>
+              {" "}
+              Members: {props.campaign.members.length}/
+              {props.campaign.triggerNumber}
+            </p>
+            <progress
+              max="100"
+              value={
+                (props.campaign.members.length / props.campaign.triggerNumber) *
+                100
+              }
+            />
+            <p>
+              {" "}
+              {props.campaign.members.length < props.campaign.triggerNumber
+                ? ` ${props.campaign.triggerNumber -
+                    props.campaign.members
+                      .length} more members until engine launched`
+                : "Engine Launched!"}{" "}
+            </p>
+            <br />
+
+            <br />
+            <br />
+            {props.auth.uid && (
+              <button
+                onClick={() => {
+                  props.history.push(`/JoinEngine/${props.campaign.id}`);
+                }}
+              >
+                Join Engine!
+              </button>
+            )}
+          </Col>
         </Row>
       </Container>
     </div>

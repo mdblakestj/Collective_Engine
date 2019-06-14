@@ -9,13 +9,12 @@ import { Container, Row, Col } from "react-bootstrap";
 const CampaignList = props => (
   <div className="campaign-list">
     <Container>
-      <Row>
-        <h1 className="new-engine">My Engines</h1>
-      </Row>
+      <h3 style={{ padding: "20px 0px 5px" }}>My Engines</h3>
+
+      {getUserEngines(props.campaigns, props.auth).map(campaign => {
+        return <CampaignDetails key={campaign.id} {...campaign} />;
+      })}
     </Container>
-    {getUserEngines(props.campaigns, props.auth).map(campaign => {
-      return <CampaignDetails key={campaign.id} {...campaign} />;
-    })}
   </div>
 );
 

@@ -7,7 +7,9 @@ import { Container, Row, Col } from "react-bootstrap";
 const NewCampaign = props => (
   <div>
     <Container>
-      <h3 className="campaign-title">New Engine</h3>
+      <h3 style={{ padding: "0px 0px 5px" }} className="campaign-title">
+        New Engine
+      </h3>
 
       <CampaignForm
         onSubmit={campaign => {
