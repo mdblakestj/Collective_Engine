@@ -29,10 +29,14 @@ const JoinEngine = props => (
 
           if (newMembers.length == props.campaign.triggerNumber) {
             launchState = true;
+            var currentLocation = window.location;
             var templateParams = {
               members: emailList,
               engine_name: props.campaign.title,
-              created_By: props.campaign.createdBy
+              created_By: props.campaign.createdBy,
+              engine_url: `${currentLocation.hostname}/campaign/${
+                props.campaign.id
+              }`
             };
             emailjs
               .send(
@@ -79,5 +83,3 @@ const mapStateToProps = (state, props) => {
 const connectedJoinEngine = connect(mapStateToProps)(JoinEngine);
 
 export default connectedJoinEngine;
-
-// props.dispatch(editCampaign(props.campaigns.id, props.auth.uid))
