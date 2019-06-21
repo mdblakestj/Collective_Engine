@@ -21,14 +21,16 @@ const LogIn = props => (
       <h1>Log in</h1>
       <Card.Body>
         <LoginForm />
-        <h3>Or</h3>
-        <button
-          className="btn btn-outline-info"
-          id="google-button"
-          onClick={props.startLogin}
-        >
-          Google
-        </button>
+        <div style={{}}>
+          <hr className="hr-text" dataContent="OR" />
+          <button
+            className="btn btn-outline-info"
+            id="google-button"
+            onClick={props.startLogin}
+          >
+            Google
+          </button>
+        </div>
         <hr data-content="OR" />
         <h5>New to Collective engine?</h5>
         <NavLink to="/NewUser" activeClassName="is-active">
